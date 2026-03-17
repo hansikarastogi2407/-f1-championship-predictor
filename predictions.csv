@@ -1,0 +1,17 @@
+driver,constructor,current_points,projected_points,current_wins,win_probability,rank
+Russell,Mercedes,51,612,1,49.0,1
+Antonelli,Mercedes,47,564,1,44.5,2
+Leclerc,Ferrari,36,432,0,36.5,3
+Hamilton,Ferrari,35,420,0,35.5,4
+Norris,McLaren,18,216,0,5.0,5
+Bearman,Haas,19,228,0,3.0,6
+Piastri,McLaren,3,36,0,2.0,7
+Verstappen,Red Bull,8,96,0,1.0,8
+Lawson,Racing Bulls,8,96,0,1.0,9
+Hadjar,Racing Bulls,4,48,0,1.0,10
+Bortoleto,Audi,2,24,0,1.0,11
+Sainz,Williams,2,24,0,1.0,12
+Colapinto,Alpine,1,12,0,1.0,13
+Gasly,Alpine,0,0,0,1.0,14
+Albon,Williams,0,0,0,1.0,15
+Ocon,Haas,0,0,0,1.0,16

@@ -1,0 +1,76 @@
+year,driver,constructor,points,wins,position,champion
+2010,Vettel,Red Bull,256,5,1,1
+2010,Alonso,Ferrari,252,5,2,0
+2010,Webber,Red Bull,242,4,3,0
+2010,Hamilton,McLaren,240,3,4,0
+2010,Button,McLaren,214,2,5,0
+2011,Vettel,Red Bull,392,11,1,1
+2011,Button,McLaren,270,3,2,0
+2011,Webber,Red Bull,258,1,3,0
+2011,Alonso,Ferrari,257,1,4,0
+2011,Hamilton,McLaren,227,3,5,0
+2012,Vettel,Red Bull,281,5,1,1
+2012,Alonso,Ferrari,278,3,2,0
+2012,Raikkonen,Lotus,207,1,3,0
+2012,Hamilton,McLaren,190,4,4,0
+2012,Button,McLaren,188,1,5,0
+2013,Vettel,Red Bull,397,13,1,1
+2013,Alonso,Ferrari,242,2,2,0
+2013,Webber,Red Bull,199,2,3,0
+2013,Hamilton,Mercedes,189,1,4,0
+2013,Raikkonen,Lotus,183,1,5,0
+2014,Hamilton,Mercedes,384,11,1,1
+2014,Rosberg,Mercedes,317,5,2,0
+2014,Ricciardo,Red Bull,238,3,3,0
+2014,Bottas,Williams,186,0,4,0
+2014,Alonso,Ferrari,161,0,5,0
+2015,Hamilton,Mercedes,381,10,1,1
+2015,Rosberg,Mercedes,322,6,2,0
+2015,Vettel,Ferrari,278,3,3,0
+2015,Raikkonen,Ferrari,150,0,4,0
+2015,Massa,Williams,121,0,5,0
+2016,Rosberg,Mercedes,385,9,1,1
+2016,Hamilton,Mercedes,380,10,2,0
+2016,Ricciardo,Red Bull,256,3,3,0
+2016,Vettel,Ferrari,212,0,4,0
+2016,Raikkonen,Ferrari,186,1,5,0
+2017,Hamilton,Mercedes,363,9,1,1
+2017,Vettel,Ferrari,317,8,2,0
+2017,Bottas,Mercedes,305,3,3,0
+2017,Raikkonen,Ferrari,205,1,4,0
+2017,Ricciardo,Red Bull,200,1,5,0
+2018,Hamilton,Mercedes,408,11,1,1
+2018,Vettel,Ferrari,320,5,2,0
+2018,Raikkonen,Ferrari,251,1,3,0
+2018,Verstappen,Red Bull,249,2,4,0
+2018,Bottas,Mercedes,247,0,5,0
+2019,Hamilton,Mercedes,413,11,1,1
+2019,Bottas,Mercedes,326,4,2,0
+2019,Verstappen,Red Bull,278,3,3,0
+2019,Leclerc,Ferrari,264,2,4,0
+2019,Vettel,Ferrari,240,1,5,0
+2020,Hamilton,Mercedes,347,11,1,1
+2020,Bottas,Mercedes,223,2,2,0
+2020,Verstappen,Red Bull,214,2,3,0
+2020,Perez,Racing Point,125,1,4,0
+2020,Leclerc,Ferrari,98,0,5,0
+2021,Verstappen,Red Bull,395,10,1,1
+2021,Hamilton,Mercedes,387,8,2,0
+2021,Bottas,Mercedes,226,1,3,0
+2021,Perez,Red Bull,190,1,4,0
+2021,Norris,McLaren,160,0,5,0
+2022,Verstappen,Red Bull,454,15,1,1
+2022,Leclerc,Ferrari,308,3,2,0
+2022,Perez,Red Bull,305,2,3,0
+2022,Russell,Mercedes,275,1,4,0
+2022,Hamilton,Mercedes,240,0,5,0
+2023,Verstappen,Red Bull,575,19,1,1
+2023,Perez,Red Bull,285,2,2,0
+2023,Hamilton,Mercedes,234,0,3,0
+2023,Alonso,Aston Martin,206,0,4,0
+2023,Sainz,Ferrari,200,2,5,0
+2024,Verstappen,Red Bull,437,9,1,1
+2024,Norris,McLaren,374,4,2,0
+2024,Leclerc,Ferrari,356,3,3,0
+2024,Piastri,McLaren,292,2,4,0
+2024,Sainz,Ferrari,290,2,5,0

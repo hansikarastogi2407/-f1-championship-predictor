@@ -1,0 +1,17 @@
+driver,constructor,current_points,current_wins,races_done,races_remaining,projected_points
+Russell,Mercedes,51,1,2,22,612
+Antonelli,Mercedes,47,1,2,22,564
+Leclerc,Ferrari,36,0,2,22,432
+Hamilton,Ferrari,35,0,2,22,420
+Bearman,Haas,19,0,2,22,228
+Norris,McLaren,18,0,2,22,216
+Verstappen,Red Bull,8,0,2,22,96
+Lawson,Racing Bulls,8,0,2,22,96
+Hadjar,Racing Bulls,4,0,2,22,48
+Piastri,McLaren,3,0,2,22,36
+Bortoleto,Audi,2,0,2,22,24
+Sainz,Williams,2,0,2,22,24
+Colapinto,Alpine,1,0,2,22,12
+Gasly,Alpine,0,0,2,22,0
+Albon,Williams,0,0,2,22,0
+Ocon,Haas,0,0,2,22,0
