@@ -11,22 +11,118 @@ st.set_page_config(page_title="F1 2026 Championship Predictor", page_icon="🏎�
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;800&family=Barlow:wght@400;500;600&display=swap');
+
 * { font-family: 'Barlow', sans-serif; }
-[data-testid="stAppViewContainer"] { background: linear-gradient(135deg, #1a0000 0%, #2d0000 30%, #1a0a00 70%, #0d0d0d 100%); }
+
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(160deg, #0a0a0a 0%, #1a0500 40%, #0d0a00 70%, #0a0a0a 100%);
+}
 [data-testid="stHeader"] { background: transparent; }
-h1 { font-family: 'Barlow Condensed', sans-serif !important; font-size: 3.5rem !important; font-weight: 800 !important;
-     background: linear-gradient(90deg, #ff0000, #ff6b00, #ffffff); -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent; letter-spacing: 2px; }
-h2, h3 { font-family: 'Barlow Condensed', sans-serif !important; font-weight: 600 !important;
-          color: #ff4444 !important; letter-spacing: 1px; text-transform: uppercase; }
+
+h1 {
+    font-family: 'Barlow Condensed', sans-serif !important;
+    font-size: 3.8rem !important; font-weight: 800 !important;
+    background: linear-gradient(90deg, #ff0000, #ff6b00, #ffffff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 3px; margin-bottom: 0 !important;
+}
+h2, h3 {
+    font-family: 'Barlow Condensed', sans-serif !important;
+    font-weight: 700 !important; color: #ff4444 !important;
+    letter-spacing: 2px; text-transform: uppercase; font-size: 1.4rem !important;
+}
+
 [data-testid="metric-container"] {
-    background: linear-gradient(135deg, rgba(255,0,0,0.15), rgba(255,60,0,0.05));
-    border: 1px solid rgba(255,0,0,0.3); border-radius: 12px; padding: 20px;
-    box-shadow: 0 4px 20px rgba(255,0,0,0.1); }
-[data-testid="stMetricLabel"] { color: #ff8888 !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 1px; }
-[data-testid="stMetricValue"] { color: #ffffff !important; font-family: 'Barlow Condensed', sans-serif !important;
-                                  font-size: 2rem !important; font-weight: 700 !important; }
+    background: linear-gradient(135deg, rgba(255,50,0,0.12), rgba(255,150,0,0.05));
+    border: 1px solid rgba(255,80,0,0.35);
+    border-radius: 14px; padding: 18px;
+    box-shadow: 0 4px 24px rgba(255,50,0,0.08);
+}
+[data-testid="stMetricLabel"] {
+    color: #ff9966 !important; font-size: 0.75rem !important;
+    text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600 !important;
+}
+[data-testid="stMetricValue"] {
+    color: #ffffff !important;
+    font-family: 'Barlow Condensed', sans-serif !important;
+    font-size: 1.9rem !important; font-weight: 700 !important;
+}
+
+[data-testid="stDivider"] { border-color: rgba(255,80,0,0.25) !important; }
+
+/* Custom table styling */
+.f1-table { width: 100%; border-collapse: collapse; font-family: 'Barlow', sans-serif; }
+.f1-table th {
+    background: linear-gradient(90deg, #cc0000, #ff4400);
+    color: white; font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; padding: 12px 16px; text-align: left;
+    border: none;
+}
+.f1-table td {
+    padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: #e8e8e8; font-size: 0.92rem;
+}
+.f1-table tr:hover td { background: rgba(255,80,0,0.08); }
+.f1-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+.f1-table tr:nth-child(even):hover td { background: rgba(255,80,0,0.08); }
+.rank-badge {
+    background: linear-gradient(90deg, #cc0000, #ff4400);
+    color: white; width: 28px; height: 28px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.8rem;
+}
+.prob-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.prob-bar { height: 6px; border-radius: 3px; background: linear-gradient(90deg, #cc0000, #ff6b00); }
+.constructor-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px;
+}
+
+/* Racing animation */
+.race-track {
+    width: 100%; height: 60px; position: relative;
+    overflow: hidden; margin-bottom: 0.5rem;
+}
+.f1-car {
+    position: absolute; font-size: 2rem; top: 10px;
+    animation: race 4s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(255,100,0,0.8));
+}
+.f1-car-2 {
+    position: absolute; font-size: 1.6rem; top: 20px;
+    animation: race 4s linear infinite 1.5s;
+    filter: drop-shadow(0 0 6px rgba(255,200,0,0.6));
+    opacity: 0.7;
+}
+.speed-lines {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(90deg, transparent, transparent 40px,
+        rgba(255,80,0,0.03) 40px, rgba(255,80,0,0.03) 41px);
+}
+@keyframes race {
+    0% { left: -80px; }
+    100% { left: 110%; }
+}
+.track-line {
+    position: absolute; bottom: 8px; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, transparent, rgba(255,80,0,0.4), transparent);
+}
+.dashed-line {
+    position: absolute; bottom: 14px; left: 0; right: 0; height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.15) 0px,
+        rgba(255,255,255,0.15) 20px, transparent 20px, transparent 40px);
+}
 </style>
+
+<!-- Racing Animation -->
+<div class="race-track">
+    <div class="speed-lines"></div>
+    <div class="dashed-line"></div>
+    <div class="track-line"></div>
+    <div class="f1-car">🏎️</div>
+    <div class="f1-car-2">🏁</div>
+</div>
 """, unsafe_allow_html=True)
 
 @st.cache_data
@@ -107,17 +203,22 @@ def run_model(hist_df, df_2026):
     df['rank'] = df.index + 1
     return df
 
-hist = load_data()
-df_2026 = get_2026()
-df = run_model(hist.copy(), df_2026.copy())
-
 COLORS = {'Mercedes':'#00D2BE','Ferrari':'#E8002D','McLaren':'#FF8000','Red Bull':'#3671C6',
           'Haas':'#B6BABD','Racing Bulls':'#6692FF','Alpine':'#FF87BC','Audi':'#C0C0C0',
           'Williams':'#64C4FF','Aston Martin':'#358C75'}
 
-st.markdown('<div style="display:inline-block;background:linear-gradient(90deg,#e10600,#ff6b00);color:white;padding:4px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;letter-spacing:1px;margin-bottom:1rem">🏁 LIVE SEASON · 2026</div>', unsafe_allow_html=True)
-st.title("F1 2026 Championship Predictor")
-st.markdown("*ML predictions · 2010–2026 data · Updated after Round 2 — Chinese GP, Shanghai*")
+CONSTRUCTOR_BG = {'Mercedes':'rgba(0,210,190,0.15)','Ferrari':'rgba(232,0,45,0.15)',
+                  'McLaren':'rgba(255,128,0,0.15)','Red Bull':'rgba(54,113,198,0.15)',
+                  'Haas':'rgba(182,186,189,0.15)','Racing Bulls':'rgba(102,146,255,0.15)',
+                  'Alpine':'rgba(255,135,188,0.15)','Audi':'rgba(192,192,192,0.15)',
+                  'Williams':'rgba(100,196,255,0.15)','Aston Martin':'rgba(53,140,117,0.15)'}
+
+hist = load_data()
+df_2026 = get_2026()
+df = run_model(hist.copy(), df_2026.copy())
+
+st.title("F1 2026 CHAMPIONSHIP PREDICTOR")
+st.markdown("*Machine learning predictions · 15 seasons of data · Updated after Round 2 — Chinese GP*")
 st.divider()
 
 col1, col2, col3, col4 = st.columns(4)
@@ -188,6 +289,37 @@ st.plotly_chart(fig4, use_container_width=True)
 
 st.divider()
 st.subheader("📋 Full Predictions Table")
-st.dataframe(df[['rank','driver','constructor','current_points','projected_points','current_wins','win_probability']],
-             use_container_width=True, hide_index=True)
-st.caption("⚡ Model: Random Forest · Trained on 15 seasons of F1 data (2010–2026) · Pace-weighted using 2026 car performance")
+
+table_html = """
+<table class="f1-table">
+<thead><tr>
+<th>Rank</th><th>Driver</th><th>Constructor</th>
+<th>Current Points</th><th>Projected Points</th><th>Wins</th><th>Win Probability</th>
+</tr></thead><tbody>
+"""
+for _, row in df.iterrows():
+    color = COLORS.get(row['constructor'], '#888')
+    bg = CONSTRUCTOR_BG.get(row['constructor'], 'rgba(255,255,255,0.05)')
+    prob = row['win_probability']
+    bar_width = min(int(prob * 1.8), 100)
+    table_html += f"""
+    <tr>
+        <td><span class="rank-badge">{int(row['rank'])}</span></td>
+        <td><strong style="color:white">{row['driver']}</strong></td>
+        <td><span class="constructor-badge" style="background:{bg};color:{color};border:1px solid {color}40">{row['constructor']}</span></td>
+        <td style="color:#ff9966;font-weight:600">{int(row['current_points'])}</td>
+        <td style="color:#aaa">{int(row['projected_points'])}</td>
+        <td style="color:#ffcc00">{int(row['current_wins'])}</td>
+        <td>
+            <div class="prob-bar-wrap">
+                <div class="prob-bar" style="width:{bar_width}px"></div>
+                <span style="color:white;font-weight:600">{prob}%</span>
+            </div>
+        </td>
+    </tr>"""
+
+table_html += "</tbody></table>"
+st.markdown(table_html, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.caption("⚡ Model: Random Forest Classifier · Trained on 15 seasons of F1 data (2010–2026) · Pace-weighted using 2026 car performance data")
