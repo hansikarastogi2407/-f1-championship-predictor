@@ -11,117 +11,65 @@ st.set_page_config(page_title="F1 2026 Championship Predictor", page_icon="🏎�
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;800&family=Barlow:wght@400;500;600&display=swap');
-
 * { font-family: 'Barlow', sans-serif; }
-
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(160deg, #0a0a0a 0%, #1a0500 40%, #0d0a00 70%, #0a0a0a 100%);
+    background: linear-gradient(160deg, #0a0a0a 0%, #1a0500 40%, #0d0a00 70%, #0a0a0a 100%) !important;
 }
-[data-testid="stHeader"] { background: transparent; }
-
+[data-testid="stMain"] {
+    background: transparent !important;
+}
+.main .block-container {
+    background: transparent !important;
+}
+[data-testid="stHeader"] { background: transparent !important; }
+section[data-testid="stSidebar"] { background: #0a0000 !important; }
 h1 {
     font-family: 'Barlow Condensed', sans-serif !important;
-    font-size: 3.8rem !important; font-weight: 800 !important;
-    background: linear-gradient(90deg, #ff0000, #ff6b00, #ffffff);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    letter-spacing: 3px; margin-bottom: 0 !important;
+    font-size: 3.5rem !important; font-weight: 800 !important;
+    color: #ff2200 !important;
+    letter-spacing: 3px;
 }
 h2, h3 {
     font-family: 'Barlow Condensed', sans-serif !important;
     font-weight: 700 !important; color: #ff4444 !important;
-    letter-spacing: 2px; text-transform: uppercase; font-size: 1.4rem !important;
+    letter-spacing: 2px; text-transform: uppercase; font-size: 1.3rem !important;
 }
-
 [data-testid="metric-container"] {
-    background: linear-gradient(135deg, rgba(255,50,0,0.12), rgba(255,150,0,0.05));
-    border: 1px solid rgba(255,80,0,0.35);
-    border-radius: 14px; padding: 18px;
-    box-shadow: 0 4px 24px rgba(255,50,0,0.08);
+    background: linear-gradient(135deg, rgba(255,50,0,0.15), rgba(255,100,0,0.05)) !important;
+    border: 1px solid rgba(255,80,0,0.4) !important;
+    border-radius: 14px !important; padding: 18px !important;
 }
 [data-testid="stMetricLabel"] {
     color: #ff9966 !important; font-size: 0.75rem !important;
-    text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600 !important;
+    text-transform: uppercase !important; letter-spacing: 1.5px !important;
 }
 [data-testid="stMetricValue"] {
     color: #ffffff !important;
     font-family: 'Barlow Condensed', sans-serif !important;
     font-size: 1.9rem !important; font-weight: 700 !important;
 }
-
-[data-testid="stDivider"] { border-color: rgba(255,80,0,0.25) !important; }
-
-/* Custom table styling */
-.f1-table { width: 100%; border-collapse: collapse; font-family: 'Barlow', sans-serif; }
-.f1-table th {
-    background: linear-gradient(90deg, #cc0000, #ff4400);
-    color: white; font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; padding: 12px 16px; text-align: left;
-    border: none;
-}
-.f1-table td {
-    padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
-    color: #e8e8e8; font-size: 0.92rem;
-}
-.f1-table tr:hover td { background: rgba(255,80,0,0.08); }
-.f1-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-.f1-table tr:nth-child(even):hover td { background: rgba(255,80,0,0.08); }
-.rank-badge {
-    background: linear-gradient(90deg, #cc0000, #ff4400);
-    color: white; width: 28px; height: 28px; border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 0.8rem;
-}
-.prob-bar-wrap { display: flex; align-items: center; gap: 8px; }
-.prob-bar { height: 6px; border-radius: 3px; background: linear-gradient(90deg, #cc0000, #ff6b00); }
-.constructor-badge {
-    display: inline-block; padding: 3px 10px; border-radius: 20px;
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px;
-}
-
-/* Racing animation */
-.race-track {
-    width: 100%; height: 60px; position: relative;
-    overflow: hidden; margin-bottom: 0.5rem;
-}
-.f1-car {
-    position: absolute; font-size: 2rem; top: 10px;
-    animation: race 4s linear infinite;
-    filter: drop-shadow(0 0 8px rgba(255,100,0,0.8));
-}
-.f1-car-2 {
-    position: absolute; font-size: 1.6rem; top: 20px;
-    animation: race 4s linear infinite 1.5s;
-    filter: drop-shadow(0 0 6px rgba(255,200,0,0.6));
-    opacity: 0.7;
-}
-.speed-lines {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: repeating-linear-gradient(90deg, transparent, transparent 40px,
-        rgba(255,80,0,0.03) 40px, rgba(255,80,0,0.03) 41px);
-}
-@keyframes race {
-    0% { left: -80px; }
-    100% { left: 110%; }
-}
-.track-line {
-    position: absolute; bottom: 8px; left: 0; right: 0;
-    height: 2px; background: linear-gradient(90deg, transparent, rgba(255,80,0,0.4), transparent);
-}
-.dashed-line {
-    position: absolute; bottom: 14px; left: 0; right: 0; height: 1px;
-    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.15) 0px,
-        rgba(255,255,255,0.15) 20px, transparent 20px, transparent 40px);
-}
+[data-testid="stDivider"] { border-color: rgba(255,80,0,0.3) !important; }
+div[data-testid="stDataFrame"] { border-radius: 12px; overflow: hidden; }
 </style>
+""", unsafe_allow_html=True)
 
-<!-- Racing Animation -->
-<div class="race-track">
-    <div class="speed-lines"></div>
-    <div class="dashed-line"></div>
-    <div class="track-line"></div>
-    <div class="f1-car">🏎️</div>
-    <div class="f1-car-2">🏁</div>
+# Racing animation
+st.markdown("""
+<div style="width:100%;height:55px;position:relative;overflow:hidden;margin-bottom:8px;
+background:linear-gradient(90deg,transparent,rgba(255,60,0,0.05),transparent);
+border-bottom:1px solid rgba(255,60,0,0.2);">
+<div style="position:absolute;bottom:10px;left:0;right:0;height:1px;
+background:repeating-linear-gradient(90deg,rgba(255,255,255,0.1) 0px,rgba(255,255,255,0.1) 20px,transparent 20px,transparent 40px)"></div>
+<div style="position:absolute;bottom:4px;left:0;right:0;height:2px;
+background:linear-gradient(90deg,transparent,rgba(255,60,0,0.5),transparent)"></div>
+<style>
+@keyframes f1race{0%{left:-100px}100%{left:110%}}
+@keyframes f1race2{0%{left:-100px}100%{left:110%}}
+.car1{position:absolute;top:5px;font-size:2rem;animation:f1race 3.5s linear infinite;filter:drop-shadow(0 0 8px rgba(255,80,0,0.9));}
+.car2{position:absolute;top:8px;font-size:1.5rem;animation:f1race2 3.5s linear infinite 1.8s;filter:drop-shadow(0 0 5px rgba(255,200,0,0.7));opacity:0.8;}
+</style>
+<div class="car1">🏎️</div>
+<div class="car2">🏎️</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -156,14 +104,14 @@ def load_data():
 @st.cache_data
 def get_2026():
     standings = [
-        ('Russell','Mercedes',51,1), ('Antonelli','Mercedes',47,1),
-        ('Leclerc','Ferrari',36,0), ('Hamilton','Ferrari',35,0),
-        ('Bearman','Haas',19,0), ('Norris','McLaren',18,0),
-        ('Verstappen','Red Bull',8,0), ('Lawson','Racing Bulls',8,0),
-        ('Hadjar','Racing Bulls',4,0), ('Piastri','McLaren',3,0),
-        ('Bortoleto','Audi',2,0), ('Sainz','Williams',2,0),
-        ('Colapinto','Alpine',1,0), ('Gasly','Alpine',0,0),
-        ('Albon','Williams',0,0), ('Ocon','Haas',0,0),
+        ('Russell','Mercedes',51,1),('Antonelli','Mercedes',47,1),
+        ('Leclerc','Ferrari',36,0),('Hamilton','Ferrari',35,0),
+        ('Bearman','Haas',19,0),('Norris','McLaren',18,0),
+        ('Verstappen','Red Bull',8,0),('Lawson','Racing Bulls',8,0),
+        ('Hadjar','Racing Bulls',4,0),('Piastri','McLaren',3,0),
+        ('Bortoleto','Audi',2,0),('Sainz','Williams',2,0),
+        ('Colapinto','Alpine',1,0),('Gasly','Alpine',0,0),
+        ('Albon','Williams',0,0),('Ocon','Haas',0,0),
     ]
     rows = []
     for driver, constructor, points, wins in standings:
@@ -174,8 +122,7 @@ def get_2026():
 
 @st.cache_data
 def run_model(hist_df, df_2026):
-    le_driver = LabelEncoder()
-    le_constructor = LabelEncoder()
+    le_driver, le_constructor = LabelEncoder(), LabelEncoder()
     all_drivers = list(hist_df['driver'].unique()) + list(df_2026['driver'].unique())
     all_constructors = list(hist_df['constructor'].unique()) + list(df_2026['constructor'].unique())
     le_driver.fit(all_drivers)
@@ -192,8 +139,7 @@ def run_model(hist_df, df_2026):
         d_enc = le_driver.transform([driver])[0] if driver in le_driver.classes_ else 0
         c_enc = le_constructor.transform([constructor])[0] if constructor in le_constructor.classes_ else 0
         prob = model.predict_proba([[row['projected_points'], row['current_wins'], d_enc, c_enc]])[0][1]
-        boost = pace_boost.get(driver, 0)
-        final_prob = max(0.01, min(0.99, prob + boost))
+        final_prob = max(0.01, min(0.99, prob + pace_boost.get(driver, 0)))
         results.append({'driver': driver, 'constructor': constructor,
                         'current_points': int(row['current_points']),
                         'projected_points': int(row['projected_points']),
@@ -206,12 +152,6 @@ def run_model(hist_df, df_2026):
 COLORS = {'Mercedes':'#00D2BE','Ferrari':'#E8002D','McLaren':'#FF8000','Red Bull':'#3671C6',
           'Haas':'#B6BABD','Racing Bulls':'#6692FF','Alpine':'#FF87BC','Audi':'#C0C0C0',
           'Williams':'#64C4FF','Aston Martin':'#358C75'}
-
-CONSTRUCTOR_BG = {'Mercedes':'rgba(0,210,190,0.15)','Ferrari':'rgba(232,0,45,0.15)',
-                  'McLaren':'rgba(255,128,0,0.15)','Red Bull':'rgba(54,113,198,0.15)',
-                  'Haas':'rgba(182,186,189,0.15)','Racing Bulls':'rgba(102,146,255,0.15)',
-                  'Alpine':'rgba(255,135,188,0.15)','Audi':'rgba(192,192,192,0.15)',
-                  'Williams':'rgba(100,196,255,0.15)','Aston Martin':'rgba(53,140,117,0.15)'}
 
 hist = load_data()
 df_2026 = get_2026()
@@ -255,7 +195,7 @@ with col_right:
     fig2.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
                        font_color='white', height=420,
                        xaxis=dict(gridcolor='rgba(255,255,255,0.08)', color='#aaa'),
-                       yaxis=dict(gridcolor='rgba(255,255,255,0.08)', color='white', tickfont=dict(size=13)),
+                       yaxis=dict(gridcolor='rgba(255,255,255,0.08)', color='white'),
                        legend=dict(bgcolor='rgba(0,0,0,0.4)', font_color='white'),
                        margin=dict(l=10,r=60,t=20,b=20))
     st.plotly_chart(fig2, use_container_width=True)
@@ -290,36 +230,23 @@ st.plotly_chart(fig4, use_container_width=True)
 st.divider()
 st.subheader("📋 Full Predictions Table")
 
-table_html = """
-<table class="f1-table">
-<thead><tr>
-<th>Rank</th><th>Driver</th><th>Constructor</th>
-<th>Current Points</th><th>Projected Points</th><th>Wins</th><th>Win Probability</th>
-</tr></thead><tbody>
-"""
-for _, row in df.iterrows():
-    color = COLORS.get(row['constructor'], '#888')
-    bg = CONSTRUCTOR_BG.get(row['constructor'], 'rgba(255,255,255,0.05)')
-    prob = row['win_probability']
-    bar_width = min(int(prob * 1.8), 100)
-    table_html += f"""
-    <tr>
-        <td><span class="rank-badge">{int(row['rank'])}</span></td>
-        <td><strong style="color:white">{row['driver']}</strong></td>
-        <td><span class="constructor-badge" style="background:{bg};color:{color};border:1px solid {color}40">{row['constructor']}</span></td>
-        <td style="color:#ff9966;font-weight:600">{int(row['current_points'])}</td>
-        <td style="color:#aaa">{int(row['projected_points'])}</td>
-        <td style="color:#ffcc00">{int(row['current_wins'])}</td>
-        <td>
-            <div class="prob-bar-wrap">
-                <div class="prob-bar" style="width:{bar_width}px"></div>
-                <span style="color:white;font-weight:600">{prob}%</span>
-            </div>
-        </td>
-    </tr>"""
+display_df = df[['rank','driver','constructor','current_points','projected_points','current_wins','win_probability']].copy()
+display_df.columns = ['Rank','Driver','Constructor','Current Points','Projected Points','Wins','Win Probability %']
+display_df['Win Probability %'] = display_df['Win Probability %'].apply(lambda x: f"{x}%")
 
-table_html += "</tbody></table>"
-st.markdown(table_html, unsafe_allow_html=True)
+st.dataframe(
+    display_df,
+    use_container_width=True,
+    hide_index=True,
+    column_config={
+        "Rank": st.column_config.NumberColumn(width="small"),
+        "Driver": st.column_config.TextColumn(width="medium"),
+        "Constructor": st.column_config.TextColumn(width="medium"),
+        "Current Points": st.column_config.NumberColumn(width="medium"),
+        "Projected Points": st.column_config.NumberColumn(width="medium"),
+        "Wins": st.column_config.NumberColumn(width="small"),
+        "Win Probability %": st.column_config.TextColumn(width="medium"),
+    }
+)
 
-st.markdown("<br>", unsafe_allow_html=True)
 st.caption("⚡ Model: Random Forest Classifier · Trained on 15 seasons of F1 data (2010–2026) · Pace-weighted using 2026 car performance data")
